@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        List<int> numbers = new List<int>();
+        Console.WriteLine("Enter numbers (type 'done' to stop):");
+
+        while (true)
+        {
+            string input = Console.ReadLine();
+            if (input.ToLower() == "done") break;
+
+            if (int.TryParse(input, out int num))
+            {
+                try
+                {
+                    if (numbers.Contains(num))
+                    {
+                        throw new Exception($"Error: The number {num} is a duplicate!");
+                    }
+                    numbers.Add(num);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+    }
+}
