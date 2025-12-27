@@ -1,0 +1,32 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.Write("Enter text: ");
+        string input = Console.ReadLine();
+        CheckVowels(input);
+        Console.WriteLine("String is valid.");
+    }
+
+    public static void CheckVowels(string text)
+    {
+        string vowels = "aeiouAEIOU";
+        bool hasVowel = false;
+
+        foreach (char c in text)
+        {
+            if (vowels.Contains(c))
+            {
+                hasVowel = true;
+                break;
+            }
+        }
+
+        if (!hasVowel)
+        {
+            throw new Exception("Invalid Input: No vowels found!");
+        }
+    }
+}
